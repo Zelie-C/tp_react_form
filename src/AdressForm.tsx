@@ -29,7 +29,7 @@ const AdressForm = () => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setSaisie(e.target.value);
       console.log(saisie);
-    }, [saisie]
+    }, []
   )
 
   const handleListClick = useCallback(
@@ -49,9 +49,12 @@ const AdressForm = () => {
         <button onClick={handleButtonClick}>Envoyer</button>
       </div>
       <div>
+      {resultRequest.length > 0 && <div>
         {resultRequest.map(
           (loc, i) => (<div key={i} className='adress-list' style={{display: adressRequest.length === 0 ? 'none' : 'block'}} onClick={(e) => {handleListClick(e, i)}}>{loc}</div>
-        ))}
+          ))}
+        </div>
+      }
       </div>
     </div>
     </>
